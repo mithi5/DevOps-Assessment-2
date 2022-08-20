@@ -36,7 +36,7 @@ pipeline {
 			}
 		}
 	}
-	stage ("Deploy the Manifest using HELM")
+	stage ("Deploy the Manifest using HELM") {
 		steps {
 		script{
                 withCredentials([kubeconfigFile(credentialsId: 'k8-config', variable: 'KUBECONFIG')]) {
