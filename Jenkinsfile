@@ -42,7 +42,7 @@ pipeline {
                 withCredentials([kubeconfigFile(credentialsId: 'k8-config', variable: 'KUBECONFIG')]) {
 		dir ("/home/ubuntu/tomcat/"){  
 		sh 'helm list'
-		sh 'helm upgrade --install --set image.repository="mithi5/my --set image.tag="${VERSION}" myjavaapp tomcat/ '
+		sh 'helm install  myapp:${VERSION} tomcat '
 					}
 				}
 			}					
