@@ -5,12 +5,11 @@ pipeline {
 	}
 	
     stages{
-        stage("clone the Repo") {
+        stage("git Checkout") {
             steps {
 		dir ("/assess2/") {
-		sh "rm -rf *"
-		sh "git clone https://github.com/mithi5/DevOps-Assessment-2.git"
-                    }
+		checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/mithi5/DevOps-Assessment-2.git']]])
+		}
                 }
 	}
 			
