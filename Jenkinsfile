@@ -18,7 +18,7 @@ pipeline {
             steps {
 		dir ("/assess2/DevOps-Assessment-2/") {
 		sh 'mvn clean package'
-		sh 'cp /assess2/DevOps-Assessment/target/bookstore-example-1.0-SNAPSHOT.war /assess2/assessment-2'
+		sh 'cp /assess2/DevOps-Assessment-2/target/bookstore-example-1.0-SNAPSHOT.war /assess2/DevOps-Assessment-2/'
                     }
                 }
             }
@@ -42,7 +42,7 @@ pipeline {
                 withCredentials([kubeconfigFile(credentialsId: 'k8-config', variable: 'KUBECONFIG')]) {
 		dir ("/home/ubuntu/tomcat/"){  
 		sh 'helm list'
-		sh 'helm install  myapp:${VERSION} tomcat '
+		sh 'helm install myapp:${VERSION} tomcat '
 					}
 				}
 			}					
