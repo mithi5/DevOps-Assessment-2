@@ -17,7 +17,7 @@ pipeline {
 	stage ("maven build") {
             steps {
 		dir ("/assess2/DevOps-Assessment-2/") {
-		sh 'mvn clean package'
+		sh 'mvn install'
 		sh 'cp /assess2/DevOps-Assessment-2/target/bookstore-example-1.0-SNAPSHOT.war /assess2/DevOps-Assessment-2/'
                     }
                 }
