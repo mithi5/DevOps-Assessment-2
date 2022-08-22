@@ -39,7 +39,7 @@ pipeline {
 		steps {
 		script{
                 withCredentials([kubeconfigFile(credentialsId: 'k8-config', variable: 'KUBECONFIG')]) {
-		dir ("/home/ubuntu/"){  
+		dir ("/home/ubuntu/tomcat1"){  
 		sh 'helm upgrade --install --force myy tomcat1 --set appimage=mithi5/my:latest --namespace prod'
 					}
 				}
