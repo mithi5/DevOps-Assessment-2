@@ -27,9 +27,9 @@ pipeline {
 		script{
 		withCredentials([string(credentialsId: 'docker-pass', variable: 'docker_password')]) {
 		dir ("/assess2/DevOps-Assessment-2") {
-		sh 'docker build -t mithi5/my:${VERSION} .'
-		sh 'docker push mithi5/my:${VERSION}'
-		sh 'docker rmi mithi5/my:${VERSION}'
+		sh 'docker build -t mithi5/myapp:${VERSION} .'
+		sh 'docker push mithi5/myapp:${VERSION}'
+		sh 'docker rmi mithi5/myapp:${VERSION}'
 					}
 				}	
 			}
@@ -40,7 +40,7 @@ pipeline {
 		script{
                 withCredentials([kubeconfigFile(credentialsId: 'k8-config', variable: 'KUBECONFIG')]) {
 		dir ("/home/ubuntu/tomcat1"){  
-		sh 'helm upgrade --install --force myy tomcat1 --set appimage=mithi5/my:latest --namespace prod'
+		sh 'helm upgrade --install --force myy tomcat1 --set appimage=mithi5/myapp:latest --namespace prod'
 					}
 				}
 			}					
