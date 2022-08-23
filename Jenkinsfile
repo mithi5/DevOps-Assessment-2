@@ -29,7 +29,6 @@ pipeline {
 		dir ("/assess2/DevOps-Assessment-2") {
 		sh 'docker build -t mithi5/myapp:${VERSION} .'
 		sh 'docker push mithi5/myapp:${VERSION}'
-		sh 'docker rmi mithi5/myapp:${VERSION}'
 					}
 				}	
 			}
