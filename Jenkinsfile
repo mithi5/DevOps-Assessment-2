@@ -27,8 +27,8 @@ pipeline {
                 withCredentials([string(credentialsId: 'docker-pass', variable: 'docker_password')]) {
                 dir ("/assess2/DevOps-Assessment-2") {
                 sh 'docker system prune -a -f'
-                sh 'docker build -t mithi5/my .'
-                sh 'docker push mithi5/my'
+                sh 'docker build -t mithi5/myapp .'
+                sh 'docker push mithi5/myapp'
                                         }
                                 }
                         }
@@ -39,7 +39,7 @@ pipeline {
 			dir ("/assess2/DevOps-Assessment-2/") {
                 sshagent(['8e67092e-04a6-422f-9f7f-a885666925b4']) {
                     sh "scp -r tomcat ubuntu@172.31.14.67:/home/ubuntu"
-					sh "ssh ubuntu@172.31.14.67 sudo helm upgrade --install --force mytest tomcat --set appimage=mithi5/myapp:latest"
+		    sh "ssh ubuntu@172.31.14.67 sudo helm upgrade --install --force mytest tomcat --set appimage=mithi5/myapp:latest"
                     }
                 }
 			}
