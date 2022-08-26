@@ -1,5 +1,6 @@
 FROM tomcat:7.0
 WORKDIR /assess2/DevOps-Assessment-2/
+ADD manager.xml /usr/local/tomcat/conf/Catalina/localhost/
 ADD ./*.war /usr/local/tomcat/webapps/
 CMD ["catalina.sh", "run"]
 
