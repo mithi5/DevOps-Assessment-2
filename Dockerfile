@@ -1,7 +1,7 @@
 FROM tomcat:7.0
 WORKDIR /assess2/DevOps-Assessment-2/
-ADD context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml
-ADD tomcat-users.xml /usr/local/tomcat/conf
+COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml
+COPY tomcat-users.xml /usr/local/tomcat/conf
 ADD ./*.war /usr/local/tomcat/webapps/
 CMD ["catalina.sh", "run"]
 
